@@ -1,0 +1,15 @@
+<h2>Editing Album</h1>
+
+<%= render 'form', album: @album %>
+
+<div class="d-flex justify-content-start pb-3">
+ <% @album.images.each do |image| %>
+    <%= image_tag(image, style:"width:20%") %>
+     <%= link_to 'Remove', delete_image_attachment_album_url(image.signed_id), class: "btn btn-light",
+                method: :delete,
+                data: { confirm: 'Are you sure?' } %>
+<% end %>
+</div>
+
+<%= link_to 'Show', @album, class: "btn btn-dark my-2" %> 
+<%= link_to 'Back', albums_path, class: "btn btn-dark" %>

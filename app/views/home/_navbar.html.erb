@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="http://localhost:3000/">GALLERY</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://localhost:3000/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+      </ul>
+      
+     <p class="navbar-text float-right">
+<% if user_signed_in? %>
+  <%# Logged in as <strong><%= current_user.email%>
+  
+  <ul class="nav">
+  <li class="nav-item">
+  <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'nav-link text-light' %>  
+  </li>
+  <li class="nav-item">
+  <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link text-light'  %>
+  </li>
+  </ul>
+<% else %>
+<ul class="nav">
+<li class="nav-item">
+  <%= link_to "Sign Up", new_user_registration_path, :class => 'nav-link text-light bg-dark'  %> 
+  </li>
+  <li class="nav-item">
+  <%= link_to "Log In", new_user_session_path, :class => 'nav-link text-light bg-dark'  %>
+  </li>
+<% end %>
+</ul>
+
+</p>
+    </div>
+  </div>
+</nav>

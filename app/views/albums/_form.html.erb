@@ -1,0 +1,48 @@
+<%= form_with(model: album) do |form| %>
+  <% if album.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
+
+      <ul>
+        <% album.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <strong><%= form.label :title%></strong>
+    <%= form.text_field :title ,class: "form-control", placeholder: "title" %>
+  </div>
+  <div class="field form-group my-2">
+    <strong><%= form.label :image%></strong>
+    <%= form.file_field :images, multiple:true ,class: "form-control", placeholder: "images" %>
+  </div>
+  <div class="field form-group my-2">
+   <strong> <%=  form.label :discription %></strong>
+    <%= form.text_area :description ,class: "form-control", placeholder: "discription" %>
+  </div>
+
+  <div class="field form-group">
+      <%= form.text_field :all_tags, placeholder: "Tags separated with comma" %>
+    </div>
+
+  <div class="field form-group mt-2 mb-4">
+    <strong><%= form.label :published %></strong>
+    <%= form.check_box :published %>
+  </div>
+  <div class="field form-group my-2">
+
+    <%= form.number_field:user_id, id: :album_user_id, class:"form-control", 
+    value: current_user.id, type: :hidden %>
+    
+  </div>
+
+
+
+
+  <div class="actions my-4">
+    <%= form.submit %>
+  </div>
+<% end %>
